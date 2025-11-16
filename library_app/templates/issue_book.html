@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="text-dark">Issue Book</h3>
+<form method="POST">{% csrf_token %}
+  <div class="mb-3">
+    <label>Student</label>
+    <select name="student" class="form-select">
+      {% for s in students %}
+      <option value="{{ s.id }}">{{ s.user.username }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Book</label>
+    <select name="book" class="form-select">
+      {% for b in books %}
+      <option value="{{ b.id }}">{{ b.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-dark">Issue Book</button>
+</form>
+{% endblock %}
